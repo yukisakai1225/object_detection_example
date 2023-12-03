@@ -8,6 +8,7 @@ environment:
   sdk: ">=3.2.2 <4.0.0"
 
 dependencies:
+  camera: ^0.10.5+5
   flutter:
     sdk: flutter
 
