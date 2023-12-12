@@ -1,61 +1,38 @@
-import 'package:camera/camera.dart';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:obj_detection/obj_detector_view.dart';
 
-// サンプルで定義
-late List<CameraDescription> _cameras;
+void main() {
+  // Android実機で動作確認できていないのでサポートしない
+  if (Platform.isAndroid) {
+    runApp(const AndroidBlock());
+    return;
+  }
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  _cameras = await availableCameras();
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget with WidgetsBindingObserver {
-  const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  CameraController? cameraController;
-
-  @override
-  void initState() {
-    cameraController = CameraController(_cameras[0], ResolutionPreset.max)
-      ..initialize().then((_) {
-        if (!mounted) {
-          return;
-        }
-        setState(() {});
-      });
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    cameraController?.dispose();
-    super.dispose();
-  }
+class AndroidBlock extends StatelessWidget {
+  const AndroidBlock({super.key});
 
   @override
   Widget build(BuildContext context) {
-    if (cameraController == null || !cameraController!.value.isInitialized) {
-      return Container();
-    }
-
-    cameraController!.startImageStream((image) async {
-      final now = DateTime.now().millisecondsSinceEpoch;
-      print("$now :  $image");
-    });
-
-    return MaterialApp(
+    return const MaterialApp(
       home: Center(
-        child: CameraPreview(
-          cameraController!,
-        ),
+        child: Text('Android is not supported.'),
       ),
+    );
+  }
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      home: ObjDetectorView(),
     );
   }
 }
