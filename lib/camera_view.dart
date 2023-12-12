@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_object_detection/google_mlkit_object_detection.dart';
@@ -81,8 +79,7 @@ class _CameraViewState extends State<CameraView> {
 
     // サポートしているフォーマット:
     // * bgra8888 for iOS
-    if (format == null ||
-        (Platform.isIOS && format != InputImageFormat.bgra8888)) return null;
+    if (format == null || (format != InputImageFormat.bgra8888)) return null;
 
     // フォーマットがbgra8888しか対応していない、1つのプレーンしか持たない
     if (image.planes.length != 1) return null;

@@ -1,12 +1,9 @@
-import 'dart:io';
 import 'dart:ui';
 import 'dart:ui' as ui;
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_object_detection/google_mlkit_object_detection.dart';
-
-import 'coordinates_translator.dart';
 
 class ObjectDetectorPainter extends CustomPainter {
   ObjectDetectorPainter(
@@ -39,40 +36,27 @@ class ObjectDetectorPainter extends CustomPainter {
       );
       builder.pushStyle(
           ui.TextStyle(color: Colors.lightGreenAccent, background: background));
-      if (detectedObject.labels.isNotEmpty) {
-        final label = detectedObject.labels
-            .reduce((a, b) => a.confidence > b.confidence ? a : b);
-        builder.addText('${label.text} ${label.confidence}\n');
-      }
       builder.pop();
 
-      final left = translateX(
+      final left = _translateX(
         detectedObject.boundingBox.left,
         size,
         imageSize,
-        rotation,
-        cameraLensDirection,
       );
-      final top = translateY(
+      final top = _translateY(
         detectedObject.boundingBox.top,
         size,
         imageSize,
-        rotation,
-        cameraLensDirection,
       );
-      final right = translateX(
+      final right = _translateX(
         detectedObject.boundingBox.right,
         size,
         imageSize,
-        rotation,
-        cameraLensDirection,
       );
-      final bottom = translateY(
+      final bottom = _translateY(
         detectedObject.boundingBox.bottom,
         size,
         imageSize,
-        rotation,
-        cameraLensDirection,
       );
 
       canvas.drawRect(
@@ -85,14 +69,25 @@ class ObjectDetectorPainter extends CustomPainter {
           ..layout(ParagraphConstraints(
             width: (right - left).abs(),
           )),
-        Offset(
-            Platform.isAndroid &&
-                    cameraLensDirection == CameraLensDirection.front
-                ? right
-                : left,
-            top),
+        Offset(left, top),
       );
     }
+  }
+
+  double _translateX(
+    double x,
+    Size canvasSize,
+    Size imageSize,
+  ) {
+    return x * canvasSize.width / imageSize.width;
+  }
+
+  double _translateY(
+    double y,
+    Size canvasSize,
+    Size imageSize,
+  ) {
+    return y * canvasSize.height / imageSize.height;
   }
 
   @override
