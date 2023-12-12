@@ -61,9 +61,11 @@ class _CameraViewState extends State<CameraView> {
       return Container();
     }
 
-    return CameraPreview(
-      cameraController!,
-      child: widget.overlay,
+    return Center(
+      child: CameraPreview(
+        cameraController!,
+        child: widget.overlay,
+      ),
     );
   }
 
