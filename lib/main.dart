@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:obj_detection/obj_detector_view.dart';
+import 'package:obj_detection/object_detector_view.dart';
 
 void main() {
   // Android実機で動作確認できていないのでサポートしない
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: ObjDetectorView(),
+      home: ObjectDetectorView(),
     );
   }
 }

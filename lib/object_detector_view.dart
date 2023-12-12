@@ -3,14 +3,14 @@ import 'package:google_mlkit_object_detection/google_mlkit_object_detection.dart
 import 'package:obj_detection/camera_view.dart';
 import 'package:obj_detection/object_detector_painter.dart';
 
-class ObjDetectorView extends StatefulWidget {
-  const ObjDetectorView({super.key});
+class ObjectDetectorView extends StatefulWidget {
+  const ObjectDetectorView({super.key});
 
   @override
-  State<ObjDetectorView> createState() => _DetectorViewState();
+  State<ObjectDetectorView> createState() => _DetectorViewState();
 }
 
-class _DetectorViewState extends State<ObjDetectorView> {
+class _DetectorViewState extends State<ObjectDetectorView> {
   ObjectDetector? _objectDetector;
   bool _canProcess = false;
   bool _isBusy = false;
