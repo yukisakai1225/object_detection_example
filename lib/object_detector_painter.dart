@@ -8,12 +8,10 @@ class ObjectDetectorPainter extends CustomPainter {
   ObjectDetectorPainter(
     this._objects,
     this.imageSize,
-    this.rotation,
   );
 
   final List<DetectedObject> _objects;
   final Size imageSize;
-  final InputImageRotation rotation;
 
   @override
   void paint(Canvas canvas, Size size) {

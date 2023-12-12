@@ -54,12 +54,10 @@ class _DetectorViewState extends State<ObjectDetectorView> {
     setState(() {});
     final objects = await _objectDetector!.processImage(inputImage);
 
-    if (inputImage.metadata?.size != null &&
-        inputImage.metadata?.rotation != null) {
+    if (inputImage.metadata?.size != null) {
       final painter = ObjectDetectorPainter(
         objects,
         inputImage.metadata!.size,
-        inputImage.metadata!.rotation,
       );
       _customPaint = CustomPaint(painter: painter);
     }
