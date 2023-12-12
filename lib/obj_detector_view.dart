@@ -48,14 +48,12 @@ class _DetectorViewState extends State<ObjDetectorView> {
   }
 
   Future<void> _processImage(InputImage inputImage) async {
-    // print(inputImage);
     if (_objectDetector == null) return;
     if (!_canProcess) return;
     if (_isBusy) return;
     _isBusy = true;
     setState(() {});
     final objects = await _objectDetector!.processImage(inputImage);
-    print(inputImage.metadata?.rotation);
 
     if (inputImage.metadata?.size != null &&
         inputImage.metadata?.rotation != null) {

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:camera/camera.dart';
+// ignore: depend_on_referenced_packages
 import 'package:google_mlkit_commons/google_mlkit_commons.dart';
 
 double translateX(
