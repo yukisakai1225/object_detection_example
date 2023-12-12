@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'dart:ui' as ui;
 
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_object_detection/google_mlkit_object_detection.dart';
 
@@ -10,13 +9,11 @@ class ObjectDetectorPainter extends CustomPainter {
     this._objects,
     this.imageSize,
     this.rotation,
-    this.cameraLensDirection,
   );
 
   final List<DetectedObject> _objects;
   final Size imageSize;
   final InputImageRotation rotation;
-  final CameraLensDirection cameraLensDirection;
 
   @override
   void paint(Canvas canvas, Size size) {

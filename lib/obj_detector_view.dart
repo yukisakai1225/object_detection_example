@@ -1,4 +1,3 @@
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_object_detection/google_mlkit_object_detection.dart';
 import 'package:obj_detection/camera_view.dart';
@@ -61,7 +60,6 @@ class _DetectorViewState extends State<ObjDetectorView> {
         objects,
         inputImage.metadata!.size,
         inputImage.metadata!.rotation,
-        CameraLensDirection.back,
       );
       _customPaint = CustomPaint(painter: painter);
     }
