@@ -2,6 +2,9 @@
 
 カメラを使ってリアルタイムで物体検出を行うサンプルプロジェクトです。
 
+[google_ml_kit_flutter](https://github.com/flutter-ml/google_ml_kit_flutter)のexampleから物体検出に関わる最低限をピックアップしています。
+詳しくは公式のドキュメントをご覧ください！
+
 ## 注意
 本プロジェクトでは実行するための最低限の機能しか実装されていません。
 
